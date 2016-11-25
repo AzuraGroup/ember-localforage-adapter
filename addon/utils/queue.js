@@ -13,6 +13,10 @@ export default Ember.Object.extend({
       });
     });
 
+    this.queue[queueKey].finally(() => {
+      this.queue[queueKey - 1] = this.queue[0];
+    });
+
     return this.queue[queueKey];
   }
 });
